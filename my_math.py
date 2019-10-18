@@ -11,6 +11,7 @@ def fact(i):
 
 
 def pow_matrix(elem, n):
+    #the normal elevation of the matrix to a degree
     mat = elem
     for i in range(1, n):
         mat = mat.dot(elem)

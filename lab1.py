@@ -5,6 +5,7 @@ import tkinter as tk
 
 
 def get_x():
+    #Convert const number x to vector x
     x_value = float(input("Input x: "))
     x = np.zeros((3, 1))
     for i in range(3):
@@ -91,11 +92,15 @@ def choice_variant():
 
 
 def draw(t, y):
-    fig = plt.figure()
-    fig = fig.add_subplot()
-    fig.plot(range(len(t)), y, 'k')
-    xax = fig.xaxis
-    xax.grid(True)
+    plt.xlabel('t')
+    plt.ylabel('y(t)')
+    plt.grid()
+
+    for i in range(len(y)):
+        plt.plot(range(len(t)), y[i])
+        text = "x" + str(i)
+        plt.legend(('x1', 'x2', 'x3'))
+
     plt.show()
 
 
