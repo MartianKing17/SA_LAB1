@@ -1,7 +1,6 @@
 import init
 import numpy as np
 import matplotlib.pyplot as plt
-import tkinter as tk
 
 
 def get_x():
@@ -96,10 +95,13 @@ def draw(t, y):
     plt.ylabel('y(t)')
     plt.grid()
 
+    axes = plt.axes()
+    axes.set_xticks(np.arange(0, 11000, 1000))
+    axes.set_xticklabels(['0', '10'])
+
     for i in range(len(y)):
         plt.plot(range(len(t)), y[i])
-        text = "x" + str(i)
-        plt.legend(('x1', 'x2', 'x3'))
+    plt.legend(('x1', 'x2', 'x3'))
 
     plt.show()
 

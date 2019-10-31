@@ -1,5 +1,4 @@
 import numpy as np
-import my_math as m
 
 '''
 A  = [
@@ -37,9 +36,7 @@ def init_b():
 
 #Array of vectors
 def init_c():
-    value = []
     c = []
-    value = np.zeros((1, 3))
 
     for i in range(3):
         value = np.zeros((1, 3))
@@ -56,8 +53,8 @@ def calculate_f(a, t, q):
     q = int(q)
     val = a * t
 
-    for i in range(1, q+1):
-        f += m.pow_matrix(val, i)/m.fact(i)
+    for i in range(q):
+        f += (a*t)**(i+1)/np.math.factorial(i+1)
 
     return f
 
@@ -65,10 +62,11 @@ def calculate_f(a, t, q):
 def calculate_g(f, a):
     # Formulas: G = (Fi(t) - I)* A * b
     # Where A is Matrix, b is a vector, Fi(t) is matrix, I - unit matrix
-    b = init_b()
+    b = np.zeros((3, 1))
+    b[2] = float(1)
     g = f - np.eye(3)
-    g = g.dot(a)
-    g = g@b
+    g = g.dot(np.linalg.inv(a))
+    g = g.dot(b)
     return g
 
 
